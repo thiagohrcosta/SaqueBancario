@@ -8,7 +8,7 @@ import exceptions.DomainException;
 
 public class Program {
 
-	public static void main(String[] args) {
+	public static void main(String[] args){
 		
 		Locale.setDefault(Locale.US);
 		Scanner sc = new Scanner (System.in);
@@ -23,7 +23,7 @@ public class Program {
 		double balance = sc.nextDouble();
 		System.out.print("Withdraw Limit : ");
 		double withdrawLimit = sc.nextDouble();
-		System.out.println("========================================");
+		System.out.println("================================================");
 		
 		Account account1 = new Account(number, holder, balance, withdrawLimit);
 		
@@ -33,12 +33,16 @@ public class Program {
 		try {
 			account1.withdraw(amount);
 			System.out.println("New balance: $ " + String.format("%.2f", account1.getBalance()));
+			System.out.println("================================================");
+
 		}
 		catch (DomainException e) {
 			System.out.println("Witdraw error: " + e.getMessage());
 			
 		}	
-		
+		catch (RuntimeException r) {
+			System.out.println("Unexpected error!");
+		}
 		
 		sc.close();
 

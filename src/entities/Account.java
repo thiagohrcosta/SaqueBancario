@@ -1,5 +1,7 @@
 package entities;
 
+import exceptions.DomainException;
+
 public class Account {
 	
 	private Integer number;
@@ -55,10 +57,10 @@ public class Account {
 	
 	public void withdraw(double amount) {
 		if ( amount > withdrawLimit) {
-			System.out.println("Error1!");
+			throw new DomainException("The amount exceeds withdraw limit");
 		}
 		if (amount > balance) {
-			System.out.println("Error2!");
+			throw new DomainException("The amount exceds the balance. Not enought money.");
 		}
 		balance -= amount;
 	}
