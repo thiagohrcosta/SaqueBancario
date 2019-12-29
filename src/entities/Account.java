@@ -48,6 +48,19 @@ public class Account {
 	}
 	
 		
+	public void deposit(double amount) {
+		balance += amount;
+		
+	}
 	
+	public void withdraw(double amount) {
+		if ( amount > withdrawLimit) {
+			System.out.println("Error1!");
+		}
+		if (amount > balance) {
+			System.out.println("Error2!");
+		}
+		balance -= amount;
+	}
 
 }
